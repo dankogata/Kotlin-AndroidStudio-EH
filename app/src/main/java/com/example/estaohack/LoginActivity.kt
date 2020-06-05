@@ -2,14 +2,11 @@ package com.example.estaohack
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.estacaohack.MainActivity
-import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.btnCadastrar
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,8 +18,8 @@ class LoginActivity : AppCompatActivity() {
         btnEntrar.setOnClickListener {
 
             //Capturando os dados
-            val email = edtLoginEmail.text.toString()
-            val senha = edtLoginSenha.text.toString()
+            val email = edtLoginEmail.text.toString().trim()
+            val senha = edtLoginSenha.text.toString().trim()
 
             //validar os dados
             if (email.isEmpty()){
@@ -37,8 +34,8 @@ class LoginActivity : AppCompatActivity() {
 
                 //Recuperar informações no SharedPreferences
                 val minhasPreferencias = getSharedPreferences("cadastro-$email", Context.MODE_PRIVATE)
-                val emailpref = minhasPreferencias("KEY_EMAIL", "")
-                val senhapref = minhasPreferencias("KEY_SENHA", "")
+                val emailpref = minhasPreferencias.getString("KEY_EMAIL", "")
+                val senhapref = minhasPreferencias.getString("KEY_SENHA", "")
 
                 //verificar email e senha (if aninhado)
                 if (email == emailpref && senha == senhapref) {

@@ -2,10 +2,11 @@ package com.example.estacaohack
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.estaohack.*
-import kotlinx.android.synthetic.main.activity_cadastro.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.estaohack.LoginActivity
+import com.example.estaohack.R
+import com.example.estaohack.WebActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,10 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // btnSair.setOnClickListener {
-        //    val mIntent = Intent(this, SplashActivity::class.java)
-         //   startActivity(mIntent)
-       // }
+
         val email = intent.getStringExtra("KEY_EMAIL")
 
         //recuperar informações recuperadas no SharedPreferences
@@ -34,20 +32,19 @@ class MainActivity : AppCompatActivity() {
         //implementar a lógica do botão sair
         //voltar para loginActivity
         btnSair.setOnClickListener (){
-            //limpar a lista de empilhamento
-            finishAffinity()
+
             //direcionar para determina Activity
-            val mIntent = Intent(this,LoginActivity::class.java)
+            val mIntent = Intent(this@MainActivity,LoginActivity::class.java)
             startActivity(mIntent)
             //finalizar aplicação
-            finishActivity()
+            finish()
 
         }
 
         //implementar a lógica do botão site
         //ir para webActivity
         btnSite.setOnClickListener() {
-            val mIntent =Intent(this, WebActivity::class.java )
+            val mIntent =Intent(this@MainActivity, WebActivity::class.java )
             startActivity(mIntent)
 
         }

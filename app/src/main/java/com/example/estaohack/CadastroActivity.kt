@@ -78,7 +78,7 @@ class CadastroActivity : AppCompatActivity() {
                 }.apply() //retorna a referencia como this
 
                 //Abrir a tela MainActivity
-                btnCadastrar.setOnClickListener(){
+                btnCadastrar.setOnClickListener{
                     val mIntent= Intent(this, MainActivity::class.java)
                     //passando informações através da intent
                     mIntent.putExtra("KEY_EMAIL",email)
